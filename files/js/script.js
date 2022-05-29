@@ -1,7 +1,6 @@
 if (typeof kotlin === 'undefined') {
   throw new Error("Error loading module 'script'. Its dependency 'kotlin' was not found. Please, check whether 'kotlin' is loaded prior to 'script'.");
-}
-var script = function (_, Kotlin) {
+}var script = function (_, Kotlin) {
   'use strict';
   var equals = Kotlin.equals;
   var unboxChar = Kotlin.unboxChar;
@@ -48,11 +47,11 @@ var script = function (_, Kotlin) {
       var entrada = Kotlin.isType(tmp$ = document.getElementById('entrada'), HTMLInputElement) ? tmp$ : throwCCE();
       var palavra = entrada.value;
       if (ehIgual(palavra)) {
-        ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + ('\n' + '\t\t\t\t<h1> Voc\xEA ganhou! <\/h1>' + '\n' + '\t\t\t\t<form method=' + '"' + 'POST' + '"' + ' action=' + '"' + 'salvar_pontuacao' + '"' + '>' + '\n' + '\t\t\t\tNome: <input name=' + '"' + 'nome_usuario' + '"' + ' type=' + '"' + 'text' + '"' + '>' + '\n' + '\t\t\t\t<input name =' + '"' + 'pontos' + '"' + ' type=' + '"' + 'hidden' + '"' + ' value=' + '"' + (chances * 100 | 0) + '"' + '> ' + '\n' + '\t\t\t\t<input type=' + '"' + 'submit' + '"' + ' value=' + '"' + 'Enviar' + '"' + '>' + '\n' + '\t\t\t\t<\/form>' + '\n' + '\t\t\t');
+        ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + ('\n' + '\t\t\t\t<section class=' + '\\' + '"' + 'vencendor' + '\\' + '"' + '>' + '\n' + '\t\t\t\t\t<h1 class=' + '\\' + '"' + 'vencendor-titulo' + '\\' + '"' + '> Voc\xEA ganhou! <\/h1>' + '\n' + '\t\t\t\t\t<form method=' + '"' + 'POST' + '"' + ' action=' + '"' + 'salvar_pontuacao' + '"' + '>' + '\n' + '\t\t\t\t\tNome: <input name=' + '"' + 'nome_usuario' + '"' + ' type=' + '"' + 'text' + '"' + '>' + '\n' + '\t\t\t\t\t<input name =' + '"' + 'pontos' + '"' + ' type=' + '"' + 'hidden' + '"' + ' value=' + '"' + (chances * 100 | 0) + '"' + '> ' + '\n' + '\t\t\t\t\t<input type=' + '"' + 'submit' + '"' + ' value=' + '"' + 'Enviar' + '"' + '>' + '\n' + '\t\t\t\t\t<\/form>' + '\n' + '\t\t\t\t<\/section>' + '\n' + '\t\t\t');
       } else {
         var letrasEmComum = temLetrasEmComum(palavra);
         var novaPalavra = replace(letrasEmComum.toString(), ',', ' ');
-        ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + ('<center><h1> ' + novaPalavra.toUpperCase() + '<\/h1><\/center>');
+        ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + ('<div class="jogadas"><h1> ' + novaPalavra.toUpperCase() + '<\/h1><\/div>');
       }
       entrada.value = '';
       chances = chances - 1 | 0;

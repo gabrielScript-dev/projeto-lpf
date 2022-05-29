@@ -13,19 +13,17 @@
   </head>
   <body>
     <header class="header-title">
-      <h1>Bem vindo ao Termo</h1>
+      <a href="index.html">Menu</a>
+      <h1>Termo</h1>
+      <a href="#">Regras</a>
     </header>
-
-    <section class="menu">
-      <div class="menu-wrapper">
-        <h1 class="menu-titulo">Menu</h1>
-        <div class="menu-escolha">
-          <a href="jogo.html" class="menu-btn">jogar</a>
-          <a href="pontuacao.html" class="menu-btn">pontuação</a>
-        </div>
+    <section class="area-jogo">
+      <div id="palavras"></div>
+      <div class="input-wrapper">
+        <input type="text" id="entrada" placeholder="escolha uma letra..." />
       </div>
+      <button onclick="script.jogar()">ENVIAR</button>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/kotlin@1.6.21/kotlin.min.js"></script>
     <script src="js/script.js"></script>
   </body>

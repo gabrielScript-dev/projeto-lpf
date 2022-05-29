@@ -35,17 +35,19 @@ fun jogar() {
 
 		if(ehIgual(palavra)) {
 			area!!.innerHTML +=  """
-				<h1> Você ganhou! </h1>
-				<form method="POST" action="salvar_pontuacao">
-				Nome: <input name="nome_usuario" type="text">
-				<input name ="pontos" type="hidden" value="${chances*100}"> 
-				<input type="submit" value="Enviar">
-				</form>
+				<section class=\"vencendor\">
+					<h1 class=\"vencendor-titulo\"> Você ganhou! </h1>
+					<form method="POST" action="salvar_pontuacao">
+					Nome: <input name="nome_usuario" type="text">
+					<input name ="pontos" type="hidden" value="${chances*100}"> 
+					<input type="submit" value="Enviar">
+					</form>
+				</section>
 			"""
 		} else {
 			val letrasEmComum = temLetrasEmComum(palavra)
 			val novaPalavra = letrasEmComum.toString().replace(",", " ")
-			area!!.innerHTML +=  "<center><h1> " + novaPalavra.uppercase() + "</h1></center>"
+			area!!.innerHTML +=  "<div class=\"jogadas\"><h1> " + novaPalavra.uppercase() + "</h1></div>"
 		}
 
 		entrada.value = ""
