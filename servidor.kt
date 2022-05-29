@@ -11,6 +11,29 @@ import io.ktor.request.*
 import java.io.*
 import kotlin.io.*
 
+
+val listaDePontuacoes = mutableListOf<Jogador>()
+class Jogador(val nome: String, val pontuacao: Int)
+
+fun salvarDados(lista: List<Jogador>) {
+
+    val conteudo = lista.map {x ->
+        "Nome: " + x.nome + " Pontuação: " + x.pontuacao 
+    }.toString().replace("[", "").replace("]", "").replace(",", " - ")
+
+    File("dados.txt").writeText(conteudo)
+}
+
+fun abrirArquivo(): String {
+   val file = File("dados.txt") 
+   
+   if (!file.exists()) {
+      return "Nenhuma pontuacao ate agora!"
+   } else {
+      return file.readText()
+  }
+}
+
 fun Application.module() {
     routing {
         static("/") {
@@ -19,6 +42,22 @@ fun Application.module() {
             file("css/style.css")
             file("js/script.js")
             default("index.html")
+        }
+
+        post("/salvar_pontuacao") {
+            val parameters = call.receiveParameters()
+            val nome = parameters["nome_usuario"] as String
+            val pontos = (parameters["pontos"] as String).toInt()
+            println(nome)
+            println(pontos)
+
+            val jogador = Jogador(nome, pontos)
+            listaDePontuacoes.add(jogador)
+
+            salvarDados(listaDePontuacoes)
+
+            val file = File("files/index.html")
+            call.respondFile(file)
         }
     }
 }
