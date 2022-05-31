@@ -39,6 +39,7 @@ fun Application.module() {
         static("/") {
             staticRootFolder = File("files")
             file("index.html")
+            file("jogo.html")
             file("css/style.css")
             file("js/script.js")
             default("index.html")
