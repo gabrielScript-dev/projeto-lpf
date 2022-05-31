@@ -1,5 +1,6 @@
 import kotlinx.browser.*
 import org.w3c.dom.*
+import org.w3c.xhr.XMLHttpRequest
 import kotlin.random.Random
 
 
@@ -133,4 +134,4 @@ fun jogar() {
 			}, timeout = 4000)	
 		}
 	}	
-}
+}	
