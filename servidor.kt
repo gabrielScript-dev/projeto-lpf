@@ -18,14 +18,14 @@ class Jogador(val nome: String, val pontuacao: Int)
 fun salvarDados(lista: List<Jogador>) {
 
     val conteudo = lista.map {x ->
-        "Nome: " + x.nome + " Pontuação: " + x.pontuacao 
-    }.toString().replace("[", "").replace("]", "").replace(",", " - ")
+        "Nome: " + x.nome + " - Pontuação: " + x.pontuacao 
+    }.toString().replace("[", "").replace("]", "").replace(",", "<br>")
 
-    File("dados.txt").writeText(conteudo)
+    File("files/dados.txt").writeText(conteudo)
 }
 
 fun abrirArquivo(): String {
-   val file = File("dados.txt") 
+   val file = File("files/dados.txt") 
    
    if (!file.exists()) {
       return "Nenhuma pontuacao ate agora!"
@@ -40,9 +40,11 @@ fun Application.module() {
             staticRootFolder = File("files")
             file("index.html")
             file("jogo.html")
+            file("dados.txt")
             file("pontuacao.html")
             file("css/style.css")
             file("js/script.js")
+            file("js/pontuacao.js")
             default("index.html")
         }
 
