@@ -35,12 +35,12 @@ fun jogar() {
 
 		if(ehIgual(palavra)) {
 			area!!.innerHTML +=  """
-				<section class=\"vencendor\">
-					<h1 class=\"vencendor-titulo\"> Você ganhou! </h1>
+				<section class="vencendor">
+					<h1 class="vencendor-titulo"> Você ganhou! </h1>
 					<form method="POST" action="salvar_pontuacao">
-					Nome: <input name="nome_usuario" type="text">
-					<input name ="pontos" type="hidden" value="${chances*100}"> 
-					<input type="submit" value="Enviar">
+						Nome: <input name="nome_usuario" type="text">
+						<input name ="pontos" type="hidden" value="${chances*100}"> 
+						<input type="submit" value="salvar">
 					</form>
 				</section>
 			"""
