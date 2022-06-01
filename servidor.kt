@@ -16,22 +16,26 @@ val listaDePontuacoes = mutableListOf<Jogador>()
 class Jogador(val nome: String, val pontuacao: Int)
 
 fun salvarDados(lista: List<Jogador>) {
-
-    val conteudo = lista.map {x ->
-        "Nome: " + x.nome + " - Pontuação: " + x.pontuacao 
-    }.toString().replace("[", "").replace("]", "").replace(",", "<br>")
+    val novaLista = lista.sortedBy {x -> x.pontuacao}.reversed()
+    val conteudo = novaLista.joinToString(separator="\n") { jogador ->
+         "<br>*" + jogador.nome + ";" + jogador.pontuacao
+    }
 
     File("files/dados.txt").writeText(conteudo)
 }
 
-fun abrirArquivo(): String {
-   val file = File("files/dados.txt") 
-   
-   if (!file.exists()) {
-      return "Nenhuma pontuacao ate agora!"
-   } else {
-      return file.readText()
-  }
+fun abrirArquivo() {
+    val file = File("files/dados.txt") 
+
+    if (file.exists()) {
+        val conteudo = file.readText()
+        val dados = conteudo.split("\n").
+                   map { linha -> linha.split(";") } . 
+                   map { linha -> Jogador(linha[0], linha[1].toInt()) }
+        listaDePontuacoes.clear()
+        listaDePontuacoes.addAll(dados)
+    } 
+
 }
 
 fun Application.module() {
@@ -57,7 +61,6 @@ fun Application.module() {
 
             val jogador = Jogador(nome, pontos)
             listaDePontuacoes.add(jogador)
-
             salvarDados(listaDePontuacoes)
 
             val file = File("files/index.html")
@@ -67,6 +70,7 @@ fun Application.module() {
 }
 
 fun main() {
+    abrirArquivo()
     embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
         module()
     }.start(wait = true)
