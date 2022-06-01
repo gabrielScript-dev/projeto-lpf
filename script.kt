@@ -1,8 +1,6 @@
 import kotlinx.browser.*
 import org.w3c.dom.*
-import org.w3c.xhr.XMLHttpRequest
 import kotlin.random.Random
-
 
 var rodada = 0
 var chances = 5
@@ -112,7 +110,7 @@ fun jogar() {
 	entrada.value = ""
 	
 	if(verificarEntrada(palavra)) {
-		if(verificarPalavra(palavra)) {
+		if(verificarPalavra(palavra.lowercase())) {
 			imprimirResultado(true)
 			proximaRodada(chances*100)
 	
