@@ -15,6 +15,7 @@ var script = function (_, Kotlin) {
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   var iterator = Kotlin.kotlin.text.iterator_gw00vp$;
   var toBoxedChar = Kotlin.toBoxedChar;
+  var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
   var rodada;
   var chances;
   var pontucaoTotal;
@@ -114,9 +115,11 @@ var script = function (_, Kotlin) {
     var tmp$;
     var entrada = Kotlin.isType(tmp$ = document.getElementById('entrada'), HTMLInputElement) ? tmp$ : throwCCE();
     var palavra = entrada.value;
+    var teste = Regex_init('-?[0-9]+(\\.[0-9]+)?').containsMatchIn_6bul2c$(palavra);
+    console.log(teste);
     entrada.value = '';
     if (verificarEntrada(palavra)) {
-      if (verificarPalavra(palavra)) {
+      if (verificarPalavra(palavra.toLowerCase())) {
         imprimirResultado(true);
         proximaRodada(chances * 100 | 0);
       } else {
