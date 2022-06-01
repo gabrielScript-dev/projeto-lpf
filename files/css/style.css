@@ -7,10 +7,10 @@
 }
 
 input {
-	border:none;
-	border-radius: 8px;
-	outline: none;
-	padding-left:  8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding-left: 8px;
 }
 
 body,
@@ -125,7 +125,8 @@ html {
   margin-top: 10px;
 }
 
-.header-title a {
+.header-title a,
+.header-pontuacao a {
   text-decoration: none;
   color: #ffffff;
   transition: 0.5s;
@@ -135,11 +136,13 @@ html {
   padding: 2px 4px;
 }
 
-.header-title a:hover {
+.header-title a:hover,
+.header-pontuacao a:hover {
   color: #700b97;
 }
 
-.header-title h1 {
+.header-title h1,
+.header-pontuacao h1 {
   color: #ffffff;
   font-weight: 700;
   margin-bottom: 40px;
@@ -174,6 +177,15 @@ html {
   }
 }
 
+.header-pontuacao {
+  width:70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #ffffff;
+}
+
 .area-jogo {
   width: 100%;
   height: 40vh;
@@ -190,12 +202,12 @@ html {
 }
 
 .input-wrapper {
-	display:flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-wrapper input[type="text"] {
-	width: 100px;
+  width: 100px;
   height: 30px;
   padding-left: 8px;
   border-radius: 8px 0 0 8px;
@@ -213,26 +225,24 @@ html {
 }
 
 .input-wrapper button {
-	width: 20rem;
-	padding: 10px 0;
-	margin-top: 2rem;
-	align-self: center;
-	font-size: 1em;
-	letter-spacing: 1.2px;
-	font-weight: bold;
-	color: #ffffff;
-	background-color: #3e065f;
-	border: none;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: .3s ease-in-out;
+  width: 20rem;
+  padding: 10px 0;
+  margin-top: 2rem;
+  align-self: center;
+  font-size: 1em;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #3e065f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
 .input-wrapper button:hover {
-	background-color: #700b97;
+  background-color: #700b97;
 }
-
-
 
 #entrada {
   width: 400px;
@@ -278,12 +288,48 @@ html {
   cursor: pointer;
   background-color: #151515;
   color: #ffffff;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .vencendor input[type="submit"]:hover {
   background-color: #ffffff;
   color: #3e065f;
+}
+
+.lista-pontos {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2%;
+  height: 100vh;
+}
+
+.scores {
+  text-align: center;
+}
+
+.scores h1 {
+  color: #ffffff;
+  font-size: 2.2rem;
+}
+
+.score-player {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.score-player span {
+  font-size: 1.3rem;
+  letter-spacing: 1.01px;
+  font-weight: 600;
+  color: #700b97;
+  cursor: pointer;
+  transition: .1s ease-in;
+}
+
+.score-player:hover > span{
+  color: #ffffff;
 }
 
 .GREEN {
