@@ -4,10 +4,12 @@ if (typeof kotlin === 'undefined') {
 var pontuacao = function (_, Kotlin) {
   'use strict';
   var ensureNotNull = Kotlin.ensureNotNull;
+  var Unit = Kotlin.kotlin.Unit;
   function main$lambda(closure$xhttp) {
     return function () {
       var areaDePontos = document.getElementById('listaDePontos');
-      ensureNotNull(areaDePontos).innerHTML = '\n' + '            <h1> Score: <\/h1>' + '\n' + '            <h2>' + closure$xhttp.v.responseText.toString() + '<\/h2>' + '\n' + '        ';
+      ensureNotNull(areaDePontos).innerHTML = '\n' + '            <h1> Score: <\/h1>' + '\n' + '            <h2>' + closure$xhttp.v.responseText.replaceAll(';', ' - PONTUAC\xC3O: ').replaceAll('*', 'NOME: ').toString() + '<\/h2>' + '\n' + '        ';
+      return Unit;
     };
   }
   function main() {
