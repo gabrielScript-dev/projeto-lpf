@@ -13,6 +13,8 @@ import kotlin.io.*
 
 
 val listaDePontuacoes = mutableListOf<Jogador>()
+val listaDeArquivosDoApp = listOf("dados.txt", "index.html", "jogo.html", "regras.html", "pontuacao.html", "css/style.css", "js/script.js", "js/pontuacao.js")
+
 class Jogador(val nome: String, val pontuacao: Int)
 
 fun salvarDados(lista: List<Jogador>) {
@@ -43,14 +45,11 @@ fun Application.module() {
     routing {
         static("/") {
             staticRootFolder = File("files")
-            file("index.html")
-            file("jogo.html")
-            file("dados.txt")
-            file("pontuacao.html")
-            file("css/style.css")
-            file("js/script.js")
-            file("js/pontuacao.js")
-            default("index.html")
+            listaDeArquivosDoApp.forEach {
+                file(it)
+            }
+
+            default(listaDeArquivosDoApp[1])
         }
 
         post("/salvar_pontuacao") {
