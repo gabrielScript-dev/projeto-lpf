@@ -178,7 +178,7 @@ html {
 }
 
 .header-pontuacao {
-  width:70%;
+  width: 70%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -188,7 +188,8 @@ html {
 
 .area-jogo {
   width: 100%;
-  height: 40vh;
+  height: auto;
+  margin-top: 100px;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
@@ -284,7 +285,7 @@ html {
 }
 
 .vencendor input[type="submit"] {
-  padding: 5px 10px;
+  padding: 5px 15px;
   cursor: pointer;
   background-color: #151515;
   color: #ffffff;
@@ -325,11 +326,39 @@ html {
   font-weight: 600;
   color: #700b97;
   cursor: pointer;
-  transition: .1s ease-in;
+  transition: 0.1s ease-in;
 }
 
-.score-player:hover > span{
+.score-player:hover > span {
   color: #ffffff;
+}
+
+/* REGRAS */
+
+.regras-jogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  max-width: 500px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 0 2%;
+  border-radius: 8px;
+  background-color: #700b97;
+  -webkit-box-shadow: 1px 3px 17px 0px rgba(112,11,151,1);
+-moz-box-shadow: 1px 3px 17px 0px rgba(112,11,151,1);
+box-shadow: 1px 3px 17px 0px rgba(112,11,151,1);
+}
+
+.regras-wrapper {
+  margin-top: 30px;
+}
+
+.regra {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 30px 0;
 }
 
 .GREEN {

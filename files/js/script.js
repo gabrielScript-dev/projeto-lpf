@@ -1,7 +1,6 @@
 if (typeof kotlin === 'undefined') {
   throw new Error("Error loading module 'script'. Its dependency 'kotlin' was not found. Please, check whether 'kotlin' is loaded prior to 'script'.");
-}
-var script = function (_, Kotlin) {
+}var script = function (_, Kotlin) {
   'use strict';
   var Random = Kotlin.kotlin.random.Random;
   var equals = Kotlin.equals;
@@ -15,7 +14,6 @@ var script = function (_, Kotlin) {
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   var iterator = Kotlin.kotlin.text.iterator_gw00vp$;
   var toBoxedChar = Kotlin.toBoxedChar;
-  var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
   var rodada;
   var chances;
   var pontucaoTotal;
@@ -105,7 +103,7 @@ var script = function (_, Kotlin) {
     return result;
   }
   function fimDeJogo(pontuacao) {
-    return '\n' + '\t\t<h1> Voc\xEA ganhou! <\/h1>' + '\n' + '\t\t<form method=' + '"' + 'POST' + '"' + ' action=' + '"' + 'salvar_pontuacao' + '"' + '>' + '\n' + '\t\t\tNome: <input name=' + '"' + 'nome_usuario' + '"' + ' type=' + '"' + 'text' + '"' + '>' + '\n' + '\t\t\t<input name =' + '"' + 'pontos' + '"' + ' type=' + '"' + 'hidden' + '"' + ' value=' + '"' + pontuacao + '"' + '> ' + '\n' + '\t\t\t<input type=' + '"' + 'submit' + '"' + ' value=' + '"' + 'Enviar' + '"' + '>' + '\n' + '\t\t<\/form>' + '\n' + '\t';
+    return '\n' + '\t\t<section class=' + '"' + 'vencendor' + '"' + '>' + '\n' + '\t\t\t<h1> Voc\xEA ganhou! <\/h1>' + '\n' + '\t\t\t<form method=' + '"' + 'POST' + '"' + ' action=' + '"' + 'salvar_pontuacao' + '"' + '>' + '\n' + '\t\t\t\tNome: <input name=' + '"' + 'nome_usuario' + '"' + ' type=' + '"' + 'text' + '"' + '>' + '\n' + '\t\t\t\t<input name =' + '"' + 'pontos' + '"' + ' type=' + '"' + 'hidden' + '"' + ' value=' + '"' + pontuacao + '"' + '> ' + '\n' + '\t\t\t\t<input type=' + '"' + 'submit' + '"' + ' value=' + '"' + 'Enviar' + '"' + '>' + '\n' + '\t\t\t<\/form>' + '\n' + '\t\t<\/section>' + '\n' + '\t';
   }
   function jogar$lambda() {
     ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + fimDeJogo(pontucaoTotal);
@@ -115,8 +113,6 @@ var script = function (_, Kotlin) {
     var tmp$;
     var entrada = Kotlin.isType(tmp$ = document.getElementById('entrada'), HTMLInputElement) ? tmp$ : throwCCE();
     var palavra = entrada.value;
-    var teste = Regex_init('-?[0-9]+(\\.[0-9]+)?').containsMatchIn_6bul2c$(palavra);
-    console.log(teste);
     entrada.value = '';
     if (verificarEntrada(palavra)) {
       if (verificarPalavra(palavra.toLowerCase())) {
@@ -128,14 +124,11 @@ var script = function (_, Kotlin) {
       if (chances === 0) {
         imprimirResultado(false);
         proximaRodada(chances);
-      }
-      console.log('rodada atual: ' + toString(rodada));
+      }console.log('rodada atual: ' + toString(rodada));
       if (rodada === 2) {
         console.log('fim de jogo! ' + toString(pontucaoTotal));
         window.setTimeout(jogar$lambda, 4000);
-      }
-    }
-  }
+      }}}
   Object.defineProperty(_, 'rodada', {
     get: function () {
       return rodada;

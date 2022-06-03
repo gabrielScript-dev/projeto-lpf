@@ -93,12 +93,14 @@ fun verificarPalavra(s: String): Boolean {
 
 fun fimDeJogo(pontuacao: Int): String {
 	return """
-		<h1> Você ganhou! </h1>
-		<form method="POST" action="salvar_pontuacao">
-			Nome: <input name="nome_usuario" type="text">
-			<input name ="pontos" type="hidden" value="${pontuacao}"> 
-			<input type="submit" value="Enviar">
-		</form>
+		<section class="vencendor">
+			<h1> Você ganhou! </h1>
+			<form method="POST" action="salvar_pontuacao">
+				Nome: <input name="nome_usuario" type="text">
+				<input name ="pontos" type="hidden" value="${pontuacao}"> 
+				<input type="submit" value="Enviar">
+			</form>
+		</section>
 	"""
 }
 
