@@ -1,4 +1,4 @@
-Bem vindo a nosso projeto de LPF! Ele foi desenvolvido em Kotlin, utilizando-se do paradigma funcional majoritariamente.
+# Bem vindo a nosso projeto de LPF! Ele foi desenvolvido em Kotlin, utilizando-se do paradigma funcional majoritariamente.
 
 Esse é um jogo de adivinhação. É gerada uma palavra aleatória de 5 letras, e seu objetivo é acertá-la o mais rápido possível!
 Para jogar, você deve digitar a palavra que você acha que está correta, e o jogo lhe dirá se você acertou a palavra secreta ou não. 
