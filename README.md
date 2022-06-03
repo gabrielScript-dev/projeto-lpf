@@ -1,4 +1,4 @@
-# Bem vindo a nosso projeto de LPF! 
+# Bem vindo ao nosso projeto de LPF! 
 ## Ele foi desenvolvido em Kotlin, utilizando-se do paradigma funcional majoritariamente.
 
 <p align="justify">Esse é um jogo de adivinhação. É gerada uma palavra aleatória de 5 letras, e seu objetivo é acertá-la o mais rápido possível! Para jogar, você deve digitar a palavra que você acha que está correta, e o jogo lhe dirá se você acertou a palavra secreta ou não. Caso sua palavra possua alguma letra correspondente na palavra secreta, e ela esteja na mesma posição em ambas, essa letra será marcada em verde. Caso a sua palavra possua alguma letra correspondente na palavra secreta, mas esteja em uma posição diferente, ela
@@ -7,10 +7,7 @@ será marcada em amarelo e, caso não possua nenhuma correspondência, não ser�
 Boa sorte e divirta-se!
 
 
-/////////////////////////////////////////////////////////////////////////////////
-
-
-
+![PRINT DA APLICAÇÃO:](print.jpeg)
 
 Para compilar o projeto utilize os seguintes comandos:
 
