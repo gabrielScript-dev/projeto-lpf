@@ -12,17 +12,24 @@ Boa sorte e divirta-se!
 /////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+Para compilar o projeto utilize os seguintes comandos:
+
 (Backend)
 
-Para executar o servidor basta digitar o seguinte código:
-
-kotlin -cp ktor.jar:. ServidorKt
-
-Para compilar baste digitar o seguinte código:
-
+Compila o servidor Web:
+```
 kotlinc -cp ktor.jar:. servidor.kt
+```
+
+Executa o servidor Web:
+```
+kotlin -cp ktor.jar:. ServidorKt
+```
 
 (FrontEnd)
 Compila o kotlin para JavaScript (KotlinJS):
-
-kotlinc-js script.kt -output files/js/script.js
+```
+kotlinc-js FrontEnd.kt -output static/FrontEnd.js
+```
