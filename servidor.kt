@@ -18,7 +18,7 @@ class Jogador(val nome: String, val pontuacao: Int)
 fun salvarDados(lista: List<Jogador>) {
     val novaLista = lista.sortedBy {x -> x.pontuacao}.reversed()
     val conteudo = novaLista.joinToString(separator="\n") { jogador ->
-         "<br>*" + jogador.nome + ";" + jogador.pontuacao
+        "<div class=\"score-player\"><span class=\"nome\">${jogador.nome}</span><span class=\"pontuacao\">${jogador.pontuacao}</span></div>"
     }
 
     File("files/dados.txt").writeText(conteudo)
@@ -27,15 +27,16 @@ fun salvarDados(lista: List<Jogador>) {
 fun abrirArquivo() {
     val file = File("files/dados.txt") 
 
-    if (file.exists()) {
-        val conteudo = file.readText()
+    if(!file.exists()) {
+        file.writeText("")
+    } else if(!file.readText().equals("")) {
+        val conteudo = file.readText().replace("<div class=\"score-player\"><span class=\"nome\">", "").replace("</span><span class=\"pontuacao\">", ";").replace("</span></div>", "")
         val dados = conteudo.split("\n").
-                   map { linha -> linha.split(";") } . 
-                   map { linha -> Jogador(linha[0], linha[1].toInt()) }
+                map { linha -> linha.split(";") } . 
+                map { linha -> Jogador(linha[0], linha[1].toInt()) }
         listaDePontuacoes.clear()
         listaDePontuacoes.addAll(dados)
-    } 
-
+    }
 }
 
 fun Application.module() {
@@ -56,8 +57,6 @@ fun Application.module() {
             val parameters = call.receiveParameters()
             val nome = parameters["nome_usuario"] as String
             val pontos = (parameters["pontos"] as String).toInt()
-            println(nome)
-            println(pontos)
 
             val jogador = Jogador(nome, pontos)
             listaDePontuacoes.add(jogador)
