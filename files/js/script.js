@@ -1,12 +1,14 @@
 if (typeof kotlin === 'undefined') {
   throw new Error("Error loading module 'script'. Its dependency 'kotlin' was not found. Please, check whether 'kotlin' is loaded prior to 'script'.");
-}var script = function (_, Kotlin) {
+}
+var script = function (_, Kotlin) {
   'use strict';
   var Random = Kotlin.kotlin.random.Random;
-  var equals = Kotlin.equals;
   var unboxChar = Kotlin.unboxChar;
   var contains = Kotlin.kotlin.text.contains_sgbm27$;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
+  var equals = Kotlin.equals;
+  var Kind_CLASS = Kotlin.Kind.CLASS;
   var ensureNotNull = Kotlin.ensureNotNull;
   var Unit = Kotlin.kotlin.Unit;
   var throwCCE = Kotlin.throwCCE;
@@ -14,27 +16,23 @@ if (typeof kotlin === 'undefined') {
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   var iterator = Kotlin.kotlin.text.iterator_gw00vp$;
   var toBoxedChar = Kotlin.toBoxedChar;
-  var rodada;
-  var chances;
-  var pontucaoTotal;
-  var palavraSecreta;
+  var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
+  var partida;
   var area;
-  function palavras() {
+  function Palavra() {
+    this.palavraSecreta_0 = null;
+    this.palavraSecreta_0 = this.palavras();
+  }
+  Palavra.prototype.palavras = function () {
     var palavras = ['mouse', 'sagaz', 'mexer', 'termo', 'senso', 'nobre', 'algoz', 'afeto', 'ponto', 'plena', 'sutil', 'vigor', 'fazer', 'audaz', 'sanar', 'assim', 'inato', 'cerne', 'ideia', 'fosse', 'round', 'abrir', 'hiato', 'desde', 'poder', 'moral', 'torpe', 'muito', 'honra', 'justo', 'gozar', 'anexo', 'etnia', 'sobre', 'sonho', 'tange', 'lapso', 'expor', 'haver', 'amigo', 'carma', 'velho', 'sonsa', 'ideal', 'claro', 'doido', 'horda', 'inata', 'capaz', 'xeque'];
     var random = Random.Default.nextInt_za3lpa$(palavras.length);
     console.log(palavras[random]);
     return palavras[random];
-  }
-  function proximaRodada(pontuacaoDaRodada) {
-    palavraSecreta = palavras();
-    pontucaoTotal = pontucaoTotal + pontuacaoDaRodada | 0;
-    chances = 5;
-    rodada = rodada + 1 | 0;
-  }
-  function ehIgual(s) {
-    return equals(s, palavraSecreta);
-  }
-  function temLetrasEmComum(s) {
+  };
+  Palavra.prototype.trocarPalavra = function () {
+    this.palavraSecreta_0 = this.palavras();
+  };
+  Palavra.prototype.temLetrasEmComum_61zpoe$ = function (s) {
     var destination = ArrayList_init(s.length);
     var tmp$, tmp$_0;
     var index = 0;
@@ -45,120 +43,129 @@ if (typeof kotlin === 'undefined') {
       var i = (tmp$_0 = index, index = tmp$_0 + 1 | 0, tmp$_0);
       var x = toBoxedChar(item);
       var transform$result;
-      if (unboxChar(x) === palavraSecreta.charCodeAt(i)) {
+      if (unboxChar(x) === this.palavraSecreta_0.charCodeAt(i)) {
         transform$result = '<span class="green">' + String.fromCharCode(x) + '<\/span>';
-      } else if (contains(palavraSecreta, unboxChar(x))) {
+      } else if (contains(this.palavraSecreta_0, unboxChar(x))) {
         transform$result = '<span class="yellow">' + String.fromCharCode(x) + '<\/span>';
       } else {
         transform$result = '<span>' + String.fromCharCode(x) + '<\/span>';
       }
       tmp$_1.call(destination, transform$result);
     }
-    return destination;
+    var palavraComMarcacao = replace(destination.toString(), ',', ' ');
+    return '<div class="jogadas"><h1> ' + palavraComMarcacao.toUpperCase() + '<\/h1><\/div>';
+  };
+  Palavra.prototype.ehIgual_61zpoe$ = function (palavraEscolhida) {
+    return equals(palavraEscolhida, this.palavraSecreta_0);
+  };
+  Palavra.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Palavra',
+    interfaces: []
+  };
+  function Partida(qtdRodadas) {
+    this.rodadas = 0;
+    this.chances = 0;
+    this.pontuacaoTotal = 0;
+    this.palavraSecreta_0 = null;
+    this.chances = 5;
+    this.pontuacaoTotal = 0;
+    this.rodadas = qtdRodadas;
+    this.palavraSecreta_0 = new Palavra();
   }
-  function verificarEntrada(s) {
+  Partida.prototype.proximaRodada_za3lpa$ = function (pontuacaoDaRodada) {
+    this.pontuacaoTotal = this.pontuacaoTotal + pontuacaoDaRodada | 0;
+    if (this.rodadas > 0) {
+      this.palavraSecreta_0.trocarPalavra();
+      this.chances = 5;
+      this.rodadas = this.rodadas - 1 | 0;
+    }
+    console.log(pontuacaoDaRodada);
+  };
+  Partida.prototype.acertou_6taknv$ = function (acertou) {
+    return acertou ? '<h1>Voc\xEA acertou!<\/h1>' : '<h1>Voc\xEA errou!<\/h1>';
+  };
+  Partida.prototype.palavraModificada_61zpoe$ = function (palavra) {
+    return this.palavraSecreta_0.temLetrasEmComum_61zpoe$(palavra);
+  };
+  Partida.prototype.verificarPalavra_61zpoe$ = function (s) {
+    var resultado = this.palavraSecreta_0.ehIgual_61zpoe$(s);
+    return resultado;
+  };
+  Partida.prototype.fimDeJogo = function () {
+    return '\n' + '            <h1> Game Over! <\/h1>' + '\n' + '            <form method=' + '"' + 'POST' + '"' + ' action=' + '"' + 'salvar_pontuacao' + '"' + '>' + '\n' + '                Nome: <input name=' + '"' + 'nome_usuario' + '"' + ' type=' + '"' + 'text' + '"' + '>' + '\n' + '                <input name =' + '"' + 'pontos' + '"' + ' type=' + '"' + 'hidden' + '"' + ' value=' + '"' + this.pontuacaoTotal + '"' + '> ' + '\n' + '                <input type=' + '"' + 'submit' + '"' + ' value=' + '"' + 'Enviar' + '"' + '>' + '\n' + '            <\/form>' + '\n' + '        ';
+  };
+  Partida.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Partida',
+    interfaces: []
+  };
+  function verificarEntrada(entrada) {
+    var s = replace(entrada, ' ', '');
+    var regex = Regex_init('[@!#$%^&*()/0-9]');
     if (equals(s, '')) {
       window.alert('INFORME UMA PALAVRA, POR FAVOR!');
       return false;
     } else if (s.length > 5 || s.length < 5) {
       window.alert('A PALAVRA PRECISA TER SOMENTE 5 LETRAS!');
       return false;
+    } else if (regex.containsMatchIn_6bul2c$(s)) {
+      window.alert('A PALAVRA PRECISA TER SOMENTE 5 LETRAS!');
+      return false;
     } else {
       return true;
     }
   }
-  function imprimirPalavra(palavra) {
-    var letrasEmComum = temLetrasEmComum(palavra);
-    var novaPalavra = replace(letrasEmComum.toString(), ',', ' ');
-    return '<div class="jogadas"><h1> ' + novaPalavra.toUpperCase() + '<\/h1><\/div>';
-  }
-  function imprimirResultado$lambda() {
-    ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + '<h1>Voc\xEA acertou!<\/h1>';
-    return Unit;
+  function imprimirResultado$lambda(closure$resultado) {
+    return function () {
+      ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + closure$resultado;
+      return Unit;
+    };
   }
   function imprimirResultado$lambda_0() {
     ensureNotNull(area).innerHTML = ' ';
     return Unit;
   }
-  function imprimirResultado$lambda_1() {
-    ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + '<h1>Voc\xEA errou!<\/h1>';
-    return Unit;
+  function imprimirResultado(resultado, tempo) {
+    window.setTimeout(imprimirResultado$lambda(resultado), tempo);
+    window.setTimeout(imprimirResultado$lambda_0, tempo + 2000 | 0);
   }
-  function imprimirResultado$lambda_2() {
-    ensureNotNull(area).innerHTML = ' ';
-    return Unit;
+  function imprimirFimDeJogo$lambda(closure$s) {
+    return function () {
+      ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + closure$s;
+      return Unit;
+    };
   }
-  function imprimirResultado(acertou) {
-    if (acertou) {
-      window.setTimeout(imprimirResultado$lambda, 1000);
-      window.setTimeout(imprimirResultado$lambda_0, 3000);
-    } else {
-      window.setTimeout(imprimirResultado$lambda_1, 1000);
-      window.setTimeout(imprimirResultado$lambda_2, 3000);
-    }
-  }
-  function verificarPalavra(s) {
-    var result = ehIgual(s);
-    ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + imprimirPalavra(s);
-    return result;
-  }
-  function fimDeJogo(pontuacao) {
-    return '\n' + '\t\t<section class=' + '"' + 'vencendor' + '"' + '>' + '\n' + '\t\t\t<h1> Voc\xEA ganhou! <\/h1>' + '\n' + '\t\t\t<form method=' + '"' + 'POST' + '"' + ' action=' + '"' + 'salvar_pontuacao' + '"' + '>' + '\n' + '\t\t\t\tNome: <input name=' + '"' + 'nome_usuario' + '"' + ' type=' + '"' + 'text' + '"' + '>' + '\n' + '\t\t\t\t<input name =' + '"' + 'pontos' + '"' + ' type=' + '"' + 'hidden' + '"' + ' value=' + '"' + pontuacao + '"' + '> ' + '\n' + '\t\t\t\t<input type=' + '"' + 'submit' + '"' + ' value=' + '"' + 'Enviar' + '"' + '>' + '\n' + '\t\t\t<\/form>' + '\n' + '\t\t<\/section>' + '\n' + '\t';
-  }
-  function jogar$lambda() {
-    ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + fimDeJogo(pontucaoTotal);
-    return Unit;
+  function imprimirFimDeJogo(s, tempo) {
+    window.setTimeout(imprimirFimDeJogo$lambda(s), tempo);
   }
   function jogar() {
     var tmp$;
     var entrada = Kotlin.isType(tmp$ = document.getElementById('entrada'), HTMLInputElement) ? tmp$ : throwCCE();
-    var palavra = entrada.value;
+    var palavraAtual = entrada.value;
     entrada.value = '';
-    if (verificarEntrada(palavra)) {
-      if (verificarPalavra(palavra.toLowerCase())) {
-        imprimirResultado(true);
-        proximaRodada(chances * 100 | 0);
+    if (verificarEntrada(palavraAtual)) {
+      ensureNotNull(area).innerHTML = ensureNotNull(area).innerHTML + partida.palavraModificada_61zpoe$(palavraAtual);
+      var palavraCerta = partida.verificarPalavra_61zpoe$(palavraAtual.toLowerCase());
+      var msgResultado = partida.acertou_6taknv$(palavraCerta);
+      if (palavraCerta) {
+        imprimirResultado(msgResultado, 1000);
+        partida.proximaRodada_za3lpa$(partida.chances * 100 | 0);
+      } else if (partida.chances === 1) {
+        imprimirResultado(msgResultado, 1000);
+        partida.proximaRodada_za3lpa$(partida.chances * 0 | 0);
       } else {
-        chances = chances - 1 | 0;
+        partida.chances = partida.chances - 1 | 0;
       }
-      if (chances === 0) {
-        imprimirResultado(false);
-        proximaRodada(chances);
-      }console.log('rodada atual: ' + toString(rodada));
-      if (rodada === 2) {
-        console.log('fim de jogo! ' + toString(pontucaoTotal));
-        window.setTimeout(jogar$lambda, 4000);
-      }}}
-  Object.defineProperty(_, 'rodada', {
-    get: function () {
-      return rodada;
-    },
-    set: function (value) {
-      rodada = value;
+      if (partida.rodadas === 0) {
+        console.log('pontuacao total: ' + toString(partida.pontuacaoTotal));
+        imprimirFimDeJogo(partida.fimDeJogo(), 4000);
+      }
     }
-  });
-  Object.defineProperty(_, 'chances', {
+  }
+  Object.defineProperty(_, 'partida', {
     get: function () {
-      return chances;
-    },
-    set: function (value) {
-      chances = value;
-    }
-  });
-  Object.defineProperty(_, 'pontucaoTotal', {
-    get: function () {
-      return pontucaoTotal;
-    },
-    set: function (value) {
-      pontucaoTotal = value;
-    }
-  });
-  Object.defineProperty(_, 'palavraSecreta', {
-    get: function () {
-      return palavraSecreta;
-    },
-    set: function (value) {
-      palavraSecreta = value;
+      return partida;
     }
   });
   Object.defineProperty(_, 'area', {
@@ -166,20 +173,13 @@ if (typeof kotlin === 'undefined') {
       return area;
     }
   });
-  _.palavras = palavras;
-  _.proximaRodada_za3lpa$ = proximaRodada;
-  _.ehIgual_61zpoe$ = ehIgual;
-  _.temLetrasEmComum_61zpoe$ = temLetrasEmComum;
+  _.Palavra = Palavra;
+  _.Partida = Partida;
   _.verificarEntrada_61zpoe$ = verificarEntrada;
-  _.imprimirPalavra_61zpoe$ = imprimirPalavra;
-  _.imprimirResultado_6taknv$ = imprimirResultado;
-  _.verificarPalavra_61zpoe$ = verificarPalavra;
-  _.fimDeJogo_za3lpa$ = fimDeJogo;
+  _.imprimirResultado_bm4lxs$ = imprimirResultado;
+  _.imprimirFimDeJogo_bm4lxs$ = imprimirFimDeJogo;
   _.jogar = jogar;
-  rodada = 0;
-  chances = 5;
-  pontucaoTotal = 0;
-  palavraSecreta = palavras();
+  partida = new Partida(3);
   area = document.getElementById('palavras');
   Kotlin.defineModule('script', _);
   return _;
