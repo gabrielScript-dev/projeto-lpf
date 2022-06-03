@@ -26,5 +26,6 @@ kotlin -cp ktor.jar:. ServidorKt
 (FrontEnd)
 Compila o kotlin para JavaScript (KotlinJS):
 ```
-kotlinc-js FrontEnd.kt -output static/FrontEnd.js
+kotlinc-js script.kt -output files/js/script.js
+kotlinc-js pontuacao.kt -output files/js/pontuacao.js
 ```
