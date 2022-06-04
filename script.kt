@@ -13,7 +13,14 @@ class Palavra() {
         val palavras : Array<String> = arrayOf("mouse", "sagaz", "mexer", "termo","senso","nobre","algoz","afeto", "ponto",
         "plena","sutil","vigor","fazer","audaz","sanar","assim","inato","cerne","ideia","fosse", "round", "abrir", "hiato",
         "desde","poder","moral","torpe","muito","honra","justo","gozar", "anexo","etnia", "sobre", "sonho", "tange", "lapso", 
-        "expor", "haver", "amigo", "carma", "velho", "sonsa", "ideal", "claro", "doido", "horda", "inata", "capaz", "xeque")
+        "expor", "haver", "amigo", "carma", "velho", "sonsa", "ideal", "claro", "doido", "horda", "inata", "capaz", "xeque",
+        "seiva","banto","ferpa","punha","matar","troço","sabor","nesta","porca","etapa","ceita","barro","calça","trago",
+        "rente","sigla","coroa","axial","louro","salva","final","firma","redor","arroz","limpo","bolso","torna","tumba",
+        "coevo","solta","enjoo","queda","lutar","lousa","baixa","farol","ousar","fugiu","folha","mimar","neste","dança",
+        "corar","zumbi","sinta","veloz","burra","longo","reler","cacto","macho","salmo","penca","forro","vazia","justa",
+        "calor","farto","quite","bedel","mania","todas","sugar","lucro","gueto","chave","repor","staff","calvo","ultra",
+        "logia","sexto","merda","subir","custo","refil","passe","urgir","viger","sadio","mimos","versa","valer","lento",
+        "usual","cardo","mouro")
         val random = Random.nextInt(until = palavras.size)
         console.log(palavras[random])
         return palavras[random]
