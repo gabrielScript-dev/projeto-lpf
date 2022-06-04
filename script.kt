@@ -35,7 +35,7 @@ class Palavra() {
                 "<span class=\"yellow\">" + x + "</span>"
             } else { 
                 "<span>" + x + "</span>"
-            }}.toString().replace(",", " ")
+            }}.toString().replace(",", " ").replace("[", "").replace("]","")
 
         return "<div class=\"jogadas\"><h1> " + palavraComMarcacao.uppercase() + "</h1></div>"
     }
@@ -67,7 +67,8 @@ class Partida constructor(qtdRodadas: Int) {
     }
 
     fun acertou(acertou: Boolean): String {
-        return if(acertou) "<h1>Você acertou!</h1>" else "<h1>Você errou!</h1>"
+        val conteudo = if(acertou) "<h1>Você acertou!</h1>" else "<h1>Você errou!</h1>" 
+        return conteudo
     }
 
     fun palavraModificada(palavra: String): String {
@@ -81,9 +82,9 @@ class Partida constructor(qtdRodadas: Int) {
     }
 
     fun fimDeJogo(): String {
-        return 
-		"""
+        return """
             <h1> Game Over! </h1>
+            <h2> SCORE: ${this.pontuacaoTotal}</h2>
             <form method="POST" action="salvar_pontuacao">
                 Nome: <input name="nome_usuario" type="text">
                 <input name ="pontos" type="hidden" value="${this.pontuacaoTotal}"> 
@@ -146,7 +147,7 @@ fun jogar() {
         area!!.innerHTML += partida.palavraModificada(palavraAtual)
 
         val palavraCerta: Boolean = partida.verificarPalavra(palavraAtual.lowercase())
-        val msgResultado: String = partida.acertou(palavraCerta)
+        val msgResultado: String =  partida.acertou(palavraCerta)
 
 		if(palavraCerta) {
             imprimirResultado(msgResultado, 1000)
