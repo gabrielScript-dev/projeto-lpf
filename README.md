@@ -14,7 +14,7 @@ Boa sorte e divirta-se!
     <li>Antonio Tito Sales do Monte  Junior</li>
     <li>Gabriel Pereira da Silva</li>
     <li>Riquelme Lopes da Silva</li>
-<ul>
+<ul><br>
 
 ![PRINT DA APLICAÇÃO:](print.jpeg)
 
