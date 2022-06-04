@@ -6,6 +6,15 @@ será marcada em amarelo e, caso não possua nenhuma correspondência, não ser�
 
 Boa sorte e divirta-se!
 
+<h3>Projeto LPF - 2021.2</h3>
+
+<span> Equipe do Projeto: </span>
+<ul>
+    <li>Antonio Henrique Gomes Pereira de Sousa</li>
+    <li>Antonio Tito Sales do Monte  Junior</li>
+    <li>Gabriel Pereira da Silva</li>
+    <li>Riquelme Lopes da Silva</li>
+<ul>
 
 ![PRINT DA APLICAÇÃO:](print.jpeg)
 
@@ -30,13 +39,3 @@ Compila o kotlin para JavaScript (KotlinJS):
 kotlinc-js script.kt -output files/js/script.js
 kotlinc-js pontuacao.kt -output files/js/pontuacao.js
 ```
-
-<h3>Projeto LPF - 2021.2</h3>
-
-<span> Equipe do Projeto: </span>
-<ul>
-    <li>Antonio Henrique Gomes Pereira de Sousa</li>
-    <li>Antonio Tito Sales do Monte  Junior</li>
-    <li>Gabriel Pereira da Silva</li>
-    <li>Riquelme Lopes da Silva</li>
-<ul>
